@@ -48,7 +48,9 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:popExitAnim="@android:anim/fade_out">
+
+        </action>
         <action
             android:id="@+id/action_detailFragment_self"
             app:destination="@id/detailFragment"
@@ -57,6 +59,10 @@
             app:launchSingleTop="false"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+
+        <argument
+            android:name="product_id"
+            app:argType="string" />
     </fragment>
     <action
         android:id="@+id/action_global_mainFragment"

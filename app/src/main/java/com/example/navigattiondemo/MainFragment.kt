@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.util.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -31,6 +33,7 @@ class MainFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         settingsButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(
                 R.id.action_mainFragment_to_settingsFragment,
@@ -38,12 +41,11 @@ class MainFragment : BaseFragment() {
             )
         )
 
-        detailButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(
-                R.id.action_mainFragment_to_detailFragment,
-                null
-            )
-        )
+        detailButton.setOnClickListener {
+            val toDetailFragment =
+                MainFragmentDirections.actionMainFragmentToDetailFragment(UUID.randomUUID().toString())
+            it.findNavController().navigate(toDetailFragment)
+        }
 
         shoppingCartButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(
